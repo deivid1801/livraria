@@ -1,11 +1,15 @@
-from django.db import models 
-
-
 from django.db import models
 
-class Autor(models.Model):
-    nome = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, null=True, blank=True)
+from click.core import F
 
+
+class Autor (models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField(max_length=200, blank=True, null=True)
+    
     def __str__(self):
-        return f"{self.nome} ({self.id})"
+        return f" ({self.id}) - {self.nome}" 
+    class Meta:
+        verbose_name = 'Autor'
+        verbose_name_plural = 'Autores'
+        
